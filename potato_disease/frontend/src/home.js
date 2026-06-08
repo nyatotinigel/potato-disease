@@ -157,9 +157,13 @@ export const ImageUpload = () => {
       let formData = new FormData();
       formData.append("file", selectedFile);
       try {
+        let apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8000";
+        if (!apiUrl.endsWith("/predict")) {
+          apiUrl = apiUrl.replace(/\/$/, "") + "/predict";
+        }
         let res = await axios({
           method: "post",
-          url: process.env.REACT_APP_API_URL,
+          url: apiUrl,
           data: formData,
         });
         if (res.status === 200) {
