@@ -158,8 +158,9 @@ export const ImageUpload = () => {
       formData.append("file", selectedFile);
       try {
         let apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8000";
+        apiUrl = apiUrl.replace(/\/+$/, ""); // Remove any trailing slashes
         if (!apiUrl.endsWith("/predict")) {
-          apiUrl = apiUrl.replace(/\/$/, "") + "/predict";
+          apiUrl = apiUrl + "/predict";
         }
         let res = await axios({
           method: "post",
