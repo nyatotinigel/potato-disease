@@ -8,5 +8,5 @@ dockerfilePath = "Dockerfile.backend"
 
 
 [environments.production]
-ALLOWED_ORIGINS = "https://potato-disease.vercel.app,https://potato-disease-frontend.vercel.app"
+ALLOWED_ORIGINS = "*"
 ENVIRONMENT = "production"
