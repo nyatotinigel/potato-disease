@@ -156,15 +156,21 @@ export const ImageUpload = () => {
     if (image) {
       let formData = new FormData();
       formData.append("file", selectedFile);
-      let res = await axios({
-        method: "post",
-        url: process.env.REACT_APP_API_URL,
-        data: formData,
-      });
-      if (res.status === 200) {
-        setData(res.data);
+      try {
+        let res = await axios({
+          method: "post",
+          url: process.env.REACT_APP_API_URL,
+          data: formData,
+        });
+        if (res.status === 200) {
+          setData(res.data);
+        }
+      } catch (error) {
+        console.error("Error making prediction:", error);
+        alert("Failed to connect to the backend API! Please verify that your REACT_APP_API_URL environment variable is set to the correct Railway URL in Vercel. (Error: " + error.message + ")");
+      } finally {
+        setIsloading(false);
       }
-      setIsloading(false);
     }
   }
 
