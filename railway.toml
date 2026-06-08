@@ -5,10 +5,9 @@
 builder = "docker"
 
 [build.config]
-dockerfile = "docker-compose.yml"
+dockerfile = "Dockerfile.backend"
 
 [deploy]
-startCommand = "docker-compose up -d"
 restartPolicyMaxRetries = 3
 restartPolicyWindowSeconds = 60
 
