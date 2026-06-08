@@ -2,14 +2,10 @@
 # This file tells Railway how to deploy your app
 
 [build]
-builder = "docker"
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile.backend"
 
-[build.config]
-dockerfile = "Dockerfile.backend"
 
-[deploy]
-restartPolicyMaxRetries = 3
-restartPolicyWindowSeconds = 60
 
 [environments.production]
 ALLOWED_ORIGINS = "https://potato-disease.vercel.app,https://potato-disease-frontend.vercel.app"
